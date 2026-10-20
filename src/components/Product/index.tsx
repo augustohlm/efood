@@ -1,20 +1,32 @@
+import { useState } from 'react'
 import type { Product as ProductData } from '../../models/Product'
 import { Card, Titulo, Descricao, Botao } from './styles'
+import ProductModal from '../ProductModal'
 
 type Props = ProductData
 
-const Product = ({ title, description, image }: Props) => (
-  <Card>
-    <img src={image} alt={title} />
+const Product = (product: Props) => {
+  const [modalAberta, setModalAberta] = useState(false)
+  const { title, description, image } = product
 
-    <Titulo>{title}</Titulo>
+  return (
+    <>
+      <Card>
+        <img src={image} alt={title} />
 
-    <Descricao>{description}</Descricao>
+        <Titulo>{title}</Titulo>
 
-    <Botao type="button" disabled>
-      Adicionar ao carrinho
-    </Botao>
-  </Card>
-)
+        <Descricao>{description}</Descricao>
+
+        <Botao type="button" onClick={() => setModalAberta(true)}>
+          Mais detalhes
+        </Botao>
+      </Card>
+      {modalAberta && (
+        <ProductModal product={product} onClose={() => setModalAberta(false)} />
+      )}
+    </>
+  )
+}
 
 export default Product

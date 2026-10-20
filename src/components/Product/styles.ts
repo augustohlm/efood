@@ -21,12 +21,24 @@ export const Titulo = styled.h2`
   font-size: 16px;
   font-weight: 700;
   line-height: 1.2;
+  line-height: 1.2;
+  min-height: 2.4em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 `
 
 export const Descricao = styled.p`
   margin-bottom: 8px;
   font-size: 14px;
   line-height: 22px;
+  line-height: 22px;
+  min-height: 88px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 `
 
 export const Botao = styled.button`

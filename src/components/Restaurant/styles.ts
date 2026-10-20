@@ -46,6 +46,12 @@ export const Titulo = styled.h2`
   min-width: 0;
   font-size: 18px;
   font-weight: 700;
+  line-height: 1.2;
+  min-height: 2.4em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 `
 
 export const Avaliacao = styled.p`
@@ -66,6 +72,12 @@ export const Descricao = styled.p`
   margin-top: 16px;
   font-size: 14px;
   line-height: 22px;
+  line-height: 22px;
+  min-height: 88px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 `
 
 export const SaibaMais = styled(Link)`
