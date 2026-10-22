@@ -28,8 +28,15 @@ export const Container = styled.div`
     justify-self: start;
   }
 
-  > span {
+  > button {
     justify-self: end;
+    padding: 0;
+    border: 0;
+
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
   }
 
   font-size: 18px;
@@ -50,7 +57,7 @@ export const Container = styled.div`
     justify-items: center;
 
     > a:first-child,
-    > span {
+    > button {
       justify-self: center;
     }
   }

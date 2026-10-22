@@ -3,6 +3,10 @@ import type { Product } from '../../models/Product'
 import { Conteudo, Modal } from './styles'
 
 import closeIcon from '../../assets/images/close.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
+
+import type { RootReducer } from '../../store'
 
 type Props = {
   product: Product
@@ -11,6 +15,21 @@ type Props = {
 
 const ProductModal = ({ product, onClose }: Props) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const dispatch = useDispatch()
+  const items = useSelector((state: RootReducer) => state.cart.items)
+
+  const addToCart = () => {
+    const productInCart = items.some((item) => item.id === product.id)
+
+    if (productInCart) {
+      window.alert('Este produto já está no carrinho')
+    } else {
+      dispatch(add(product))
+    }
+
+    dialogRef.current?.close()
+    dispatch(open())
+  }
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -52,7 +71,7 @@ const ProductModal = ({ product, onClose }: Props) => {
           <p>{product.description}</p>
           <p>Serve: {product.portion}</p>
 
-          <button type="button" disabled>
+          <button type="button" onClick={addToCart}>
             Adicionar ao carrinho - {precoFormatado}
           </button>
         </div>
